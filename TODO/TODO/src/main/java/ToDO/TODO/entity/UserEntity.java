@@ -1,7 +1,7 @@
 package ToDO.TODO.entity;
 
 import jakarta.persistence.Table;
-
+import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +22,7 @@ public class UserEntity {
 	private Integer id;
 	private String name;
 	private String surname;
+	@NotBlank(message="username bos ola bilmez")
 	private String username;
 	private String password;
 
