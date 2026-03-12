@@ -2,6 +2,7 @@ package ToDO.TODO.entity;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class TaskEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String title;
-	private LocalDate date;
+	@Column(name = "date")
+	private LocalDate date=LocalDate.now();
 
 }
