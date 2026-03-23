@@ -1,10 +1,16 @@
 package FarmConnect.FarmConnect.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -18,13 +24,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FarmerEntity {
 	@Id
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@OneToOne
-	private UserEntity user_id;
-	private String name;
-	private Double size;
-	private Integer expirence_years;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private UserEntity user;
+	private String farmName;
+	private String description;
+	private Integer experienceYears;
 	
 
 }
